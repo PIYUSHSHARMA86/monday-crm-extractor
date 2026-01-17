@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Monday CRM Extractor",
+  "version": "1.0",
+  "permissions": ["storage", "tabs", "downloads"],
+  "host_permissions": ["https://*.monday.com/*"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.monday.com/*"],
+      "js": ["content-script.js"]
+    }
+  ]
+}
+
+
+
+
+
+
