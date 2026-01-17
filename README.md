@@ -25,8 +25,27 @@ Usage
 
 Technical Notes-
 
- Uses Chrome Extension Manifest V3 
- Data extraction is handled via content scripts
- Popup and content script communicate via chrome.runtime messaging.
+ -Uses Chrome Extension Manifest V3.
+ -Data extraction is handled via content scripts.
+ -Popup and content script communicate via chrome.runtime messaging.
+ 
+ ## DOM Selection Strategy
+
+- The extension runs only on Monday.com board pages.
+- Data is extracted directly from the board table DOM.
+- Stable column headers and row containers are used instead of dynamic class names.
+- The script waits for the board content to fully load before querying rows.
+- This approach ensures compatibility across Contacts, Deals, and other board types.
+
+## Storage Schema
+
+- Extracted board data is stored temporarily in `chrome.storage.local`.
+- Data structure is an array of row objects.
+- Each row object contains:
+  - itemName
+  - columnValues (key-value pairs)
+  - boardType
+  - groupName
+- Stored data persists across popup refresh until manually cleared or exported.
 
  Demo: See demo video link in submission email.
